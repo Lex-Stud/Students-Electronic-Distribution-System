@@ -1,0 +1,77 @@
+Continut:
+
+Clase:
+Secretariat
+Curs
+Student 
+        - subclase: StudentLicenta, StudentMaster
+
+Secretariat:
+- studentiMaster: ArrayList de studenti inscrisi la master
+- studentiLicienta: ArrayList de inscrisi la licenta
+- cursuri: ArrayList de Curs
+- studenti: ArrayList de Student
+
+Metode:
+-public void addStudent(String name, String type)
+         primeste numele studentului si tipul de student (licenta sau master), verifica daca studentul exista deja in lista de studenti, daca nu exista il adauga in lista de studenti si in lista de studenti licenta sau master
+        daca exista arunca exceptie de tipul StudentExistsException
+
+-public void addCurs(String name, int nrMaximStudenti)
+        primeste tipul cursului, numele si numarul maxim de studenti
+
+-citesteMedii(String fileName)
+        primeste locatia fisierului cu mediile studentilor
+        cat timp exista un fisier de tipul note_<numar>.text citeste mediile si le asignezastudentiilor
+
+-posteazaMedii(String file)
+        primeste locatia fisierului in care se vor posta mediile studentilor
+
+-public void contestatie(String Nume, String medie)
+        primeste numele studentului si noua medie
+        daca studentul exista, se cauta in lista de studenti licenta sau master si se modifica media
+
+-public void adaugaPreferinte(String[] date)
+        primeste un array de stringuri cu preferintele studentilor
+        daca studentul exista, se cauta in lista de studenti licenta sau master si se adauga preferintele intr-un vector de preferite
+
+-public void repartizeaza()
+        repartizeaza studentii la cursuri in functie de preferinte si medie
+
+-public void posteazaCursuri(String file, String curs)
+        primeste locatia fisierului in care se vor posta numele cursului si datele despre curs
+
+-public void posteazaStudenti(String file, String curs)
+        primeste locatia fisierului in care se vor posta numele cursului si datele despre studenti
+
+Curs:
+- nume: String
+- capacitate: int
+- tip: String
+- studenti: ArrayList de Student (inscriesi la curs)
+
+Metode:
+-public void addStudent(Student student)
+        primeste un student si il adauga in lista de studenti
+-getNrStudenti()
+        returneaza numarul de studenti inscrisi la curs
+
+Student:
+- nume: String
+- medie: double
+- invatamant: String
+- preferinte: ArrayList de String
+- curs: Cursul la care este inscris studentul
+
+Main: 
+        - citeste datele din fisierul de intrare
+        - creeaza un obiect de tipul Secretariat
+        - apeleaza metodele din Secretariat pentru a adauga studenti, cursuri, medii, preferinte
+        - apeleaza metoda de repartizare
+
+Colection:
+        Am ales sa folosesc ArrayList pentru a stoca studentii, cursurile si preferintele deoarece acestea sunt dinamice si nu se stie numarul lor
+                inainte de citirea din fisierul de intrare. De asemenea, am ales sa folosesc ArrayList pentru ca am nevoie de metodele de add si get.
+                Todata o sortare mai uoara si rapid a listelor de studenti si cursuri.
+                Spre exemplu, pentru a sorta lista de studenti in functie de medie, am folosit metoda sort din clasa Collections(Vezi functia de repartizare).
+```
